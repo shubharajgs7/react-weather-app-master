@@ -1,6 +1,16 @@
 import React, { useState } from "react";
-
+import TextField from "@mui/material/TextField";
+import { makeStyles } from "@material-ui/core";
+const useStyles = makeStyles({
+  style: {
+    backgroundColor: "white",
+    borderRadius: "30px",
+    width:"500px",
+    top:props => props.city ? '-220px' : '10px'
+  },
+});
 const CityInput = (props) => {
+  const classes = useStyles(props);
   const [isLoading, setIsLoading] = useState(false);
 
   const onClickHandler = async (e) => {
@@ -28,9 +38,13 @@ const CityInput = (props) => {
   };
 
   return (
-    <input
-      type="text"
-      placeholder="Enter a City..."
+    <TextField
+      className={classes.style}
+      sx={{
+        "& fieldset": { border: "none"},
+      }}
+      placeholder="Enter City Name..."
+      variant="outlined"
       onKeyPress={onClickHandler}
     />
   );

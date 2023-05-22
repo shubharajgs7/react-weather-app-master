@@ -1,6 +1,16 @@
 import React from "react";
+import { makeStyles } from "@material-ui/core";
 
+const useStyles = makeStyles({ lightTransparentBox: {
+  backgroundColor: 'rgba(255, 255, 255, 0.5)', 
+  border: '1px solid #ccc', 
+  padding: '20px',
+  borderRadius:"40px",
+  margin:"10px",
+  width:"350px"
+}})
 const WeatherBox = (props) => {
+  const classes = useStyles()
   const getDay = (date) => {
     const weekday = [
       "Sunday",
@@ -15,7 +25,7 @@ const WeatherBox = (props) => {
   };
 
   return (
-    <div>
+    <div className={classes.lightTransparentBox}>
       <h1>{props.date ? getDay(props.date) : ""}</h1>
       <img
         src={

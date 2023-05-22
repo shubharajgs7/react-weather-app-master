@@ -1,8 +1,7 @@
 import React from "react";
 
 const MainWeatherWindow = (props) => {
-  const Title = props.city ? null : <h1 className="title">Weather Forecast</h1>;
-
+  const Title = props.city ? null : <h1>Weather Forecast</h1>;
   return (
     <div>
       <div>
@@ -15,7 +14,7 @@ const MainWeatherWindow = (props) => {
           }
           alt="sun"
         />
-        <div className="today">
+        <div>
           <span>Today</span>
           <h1>{props.city}</h1>
           <p>
