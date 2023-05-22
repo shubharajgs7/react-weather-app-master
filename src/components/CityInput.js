@@ -5,13 +5,12 @@ const useStyles = makeStyles({
   style: {
     backgroundColor: "white",
     borderRadius: "30px",
-    width:"500px",
-    top:props => props.city ? '-220px' : '10px'
+    width: "500px",
+    top: (props) => (props.city ? "-220px" : "10px"),
   },
 });
 const CityInput = (props) => {
   const classes = useStyles(props);
-  const [isLoading, setIsLoading] = useState(false);
 
   const onClickHandler = async (e) => {
     e.persist();
@@ -21,8 +20,6 @@ const CityInput = (props) => {
     // check if input contains only letters after Enter was pressed
     if (eventKey === 13) {
       if (/^[a-zA-ZäöüÄÖÜß ]+$/.test(city)) {
-        setIsLoading(true);
-
         if (await props.makeApiCall(city)) {
           e.target.placeholder = "Enter a City...";
         } else {
@@ -32,7 +29,6 @@ const CityInput = (props) => {
         e.target.placeholder = "Please enter a valid city name...";
       }
 
-      setIsLoading(false);
       e.target.value = "";
     }
   };
@@ -41,7 +37,7 @@ const CityInput = (props) => {
     <TextField
       className={classes.style}
       sx={{
-        "& fieldset": { border: "none"},
+        "& fieldset": { border: "none" },
       }}
       placeholder="Enter City Name..."
       variant="outlined"
